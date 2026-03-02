@@ -1,0 +1,87 @@
+{
+  "nodes": [
+    {
+      "id": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "position": [280, 300],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "n8n",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook1"
+    },
+    {
+      "id": "CalculateFees",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [600, 80],
+      "parameters": {
+        "url": "https://YOUR_NGROK/calculate-fees",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "body": {
+          "amount": "={{ $json.amount }}",
+          "origin": "={{ $json.origin }}",
+          "destination": "={{ $json.destination }}",
+          "intermediate_choice": "={{ $json.intermediate_choice || 'None' }}"
+        }
+      },
+      "name": "calculate-fees"
+    },
+    {
+      "id": "PredictRisk",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [600, 300],
+      "parameters": {
+        "url": "https://YOUR_NGROK/predict",
+        "method": "POST",
+        "jsonParameters": true,
+        "body": {
+          "origin_country": "={{ $json.origin_country }}",
+          "destination_country": "={{ $json.destination_country }}",
+          "intermediate_nodes": "={{ $json.intermediate_nodes }}",
+          "transaction_type": "={{ $json.transaction_type }}",
+          "transaction_currency": "={{ $json.transaction_currency }}",
+          "tax_treaty_applicable": "={{ $json.tax_treaty_applicable }}"
+        }
+      },
+      "name": "predict"
+    },
+    {
+      "id": "NewsRisk",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [600, 520],
+      "parameters": {
+        "url": "https://YOUR_NGROK/news-risk",
+        "method": "POST",
+        "jsonParameters": true,
+        "body": {
+          "country_name": "={{ $json.country_name }}"
+        }
+      },
+      "name": "news-risk"
+    }
+  ],
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "calculate-fees",
+            "type": "main"
+          },
+          {
+            "node": "predict",
+            "type": "main"
+          },
+          {
+            "node": "news-risk",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  }
+}
