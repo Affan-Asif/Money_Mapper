@@ -637,4 +637,3 @@ async def news_risk(req: NewsRequest):
 #         "articles": articles,
 #         "summary": summary
 #     }
-                        
