@@ -28,9 +28,9 @@ app.add_middleware(
 # ============================================================
 #                   API KEYS
 # ============================================================
-WISE_API_KEY = "5184d64f-73e2-4365-a8f4-e2932e82a570"
-NEWSDATA_API_KEY = "pub_d6486cea97734c9a9306a14da146ffd7"
-GEMINI_API_KEY = "AIzaSyAoglmyzcsR9UpqiqKit-H6lFbYqjnofzY"
+WISE_API_KEY = os.getenv("WISE_API_KEY", "")
+NEWSDATA_API_KEY = os.getenv("NEWSDATA_API_KEY", "")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 genai.configure(api_key=GEMINI_API_KEY)
 gemini_model = genai.GenerativeModel("gemini-2.5-flash")
@@ -348,9 +348,9 @@ async def news_risk(req: NewsRequest):
 # # ============================================================
 # #                         API KEYS
 # # ============================================================
-# WISE_API_KEY = "5184d64f-73e2-4365-a8f4-e2932e82a570"
-# NEWSDATA_API_KEY = "pub_d6486cea97734c9a9306a14da146ffd7"
-# GEMINI_API_KEY = "AIzaSyAoglmyzcsR9UpqiqKit-H6lFbYqjnofzY"
+# WISE_API_KEY = "YOUR_WISE_KEY"
+# NEWSDATA_API_KEY = "YOUR_NEWSDATA_KEY"
+# GEMINI_API_KEY = "YOUR_GEMINI_KEY"
 
 # genai.configure(api_key=GEMINI_API_KEY)
 # gemini_model = genai.GenerativeModel("gemini-2.5-flash")
@@ -637,3 +637,4 @@ async def news_risk(req: NewsRequest):
 #         "articles": articles,
 #         "summary": summary
 #     }
+                        

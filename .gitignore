@@ -39,7 +39,6 @@ venv/
 ## Backend secrets / data
 backend/**/*.env
 backend/**/.env
-backend/Risk asses/PS3F_augmented_10000.csv
 
 ## Flutter / Dart (frontend)
 frontend/.dart_tool/

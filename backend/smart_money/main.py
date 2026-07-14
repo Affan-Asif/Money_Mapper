@@ -4,7 +4,7 @@ import os
 
 # ---------- CONFIG ----------
 
-WISE_API_KEY = "5184d64f-73e2-4365-a8f4-e2932e82a570"
+WISE_API_KEY = "YOUR_WISE_KEY"
 WISE_API_BASE = "https://api.transferwise.com"
 
 ORIGINS = ['USA', 'Germany', 'UK', 'France', 'Japan', 'Canada',

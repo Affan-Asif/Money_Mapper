@@ -7,8 +7,8 @@
 
 # # -------------------- LOAD ENV --------------------
 # # load_dotenv()
-# NEWSDATA_API_KEY = "pub_d6486cea97734c9a9306a14da146ffd7"
-# GEMINI_API_KEY = "AIzaSyAoglmyzcsR9UpqiqKit-H6lFbYqjnofzY"
+# NEWSDATA_API_KEY = "YOUR_NEWSDATA_KEY"
+# GEMINI_API_KEY = "YOUR_GEMINI_KEY"
 
 # if not NEWSDATA_API_KEY:
 #     st.error("NEWSDATA_API_KEY missing in .env")
@@ -117,8 +117,8 @@ import requests
 import google.generativeai as genai
 
 # -------------------- API KEYS --------------------
-NEWSDATA_API_KEY = "pub_d6486cea97734c9a9306a14da146ffd7"
-GEMINI_API_KEY = "AIzaSyAoglmyzcsR9UpqiqKit-H6lFbYqjnofzY"
+NEWSDATA_API_KEY = "YOUR_NEWSDATA_KEY"
+GEMINI_API_KEY = "YOUR_GEMINI_KEY"
 
 # Gemini setup
 genai.configure(api_key=GEMINI_API_KEY)
