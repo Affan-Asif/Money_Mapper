@@ -33,7 +33,7 @@ NEWSDATA_API_KEY = os.getenv("NEWSDATA_API_KEY", "")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 genai.configure(api_key=GEMINI_API_KEY)
-gemini_model = genai.GenerativeModel("gemini-3.1-flash")
+gemini_model = genai.GenerativeModel("gemini-3.1-flash-lite")
 
 
 # ============================================================
